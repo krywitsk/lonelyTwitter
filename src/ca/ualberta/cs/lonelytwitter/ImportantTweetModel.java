@@ -1,7 +1,7 @@
 package ca.ualberta.cs.lonelytwitter;
 
 
-public class importantTweetModel extends lonelyTweetModel
+public class ImportantTweetModel extends LonelyTweetModel
 {
 
 	public importantTweetModel(String text, Date timestamp)
