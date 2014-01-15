@@ -16,7 +16,7 @@ public class importantTweetModel extends lonelyTweetModel
 	@Override
 	public boolean isTweetImportant()
 	{
-		return this.getClass().getName();
+		return this.getClass().getName() == 'importantTweetModel';
 	}
 
 }

@@ -41,7 +41,7 @@ public abstract class lonelyTweetModel
 	}
 	public abstract void setTimestamp(Date timestamp);
 	
-	public abstract String isTweetImportant();
+	public abstract boolean isTweetImportant();
 
 	
 }

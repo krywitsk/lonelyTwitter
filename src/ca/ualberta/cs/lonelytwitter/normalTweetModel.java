@@ -24,9 +24,9 @@ public class normalTweetModel extends lonelyTweetModel
 	}
 	
 	@Override
-	public String getTweetModelType()
+	public boolean getTweetModelType()
 	{
-		return this.getClass().getName() == 'importantTweetModel";
+		return this.getClass().getName() == 'importantTweetModel';
 	} 
 	
 }
