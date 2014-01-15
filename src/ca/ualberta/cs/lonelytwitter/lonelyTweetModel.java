@@ -7,10 +7,14 @@ package ca.ualberta.cs.lonelytwitter;
 //	protected - class + subclasses + package
 //	public - anywhere
 
-public class lonelyTweetModel
+//You must add abstract for methods with no body in the method and class name
+//Abstract means we can only instantiate from an inherited class
+
+public abstract class lonelyTweetModel
 {
-	private String text;
-	private Date timestamp;
+	protected String text;
+	protected Date timestamp;
+	protected String type;
 	
 	public lonelyTweetModel(String text, Date timestamp)
 	{
@@ -30,18 +34,14 @@ public class lonelyTweetModel
 	{
 		return text;
 	}
-	public void setText(String text)
-	{
-		this.text = text;
-	}
+	public abstract void setText(String text);
 	public Date getTimestamp()
 	{
 		return timestamp;
 	}
-	public void setTimestamp(Date timestamp)
-	{
-		this.timestamp = timestamp;
-	}
+	public abstract void setTimestamp(Date timestamp);
+	
+	public abstract String isTweetImportant();
 
 	
 }
