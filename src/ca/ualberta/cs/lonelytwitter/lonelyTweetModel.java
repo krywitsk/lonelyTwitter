@@ -12,6 +12,20 @@ public class lonelyTweetModel
 	private String text;
 	private Date timestamp;
 	
+	public lonelyTweetModel(String text, Date timestamp)
+	{
+		super();
+		this.text = text;
+		this.timestamp = timestamp;
+	}
+	
+	public lonelyTweetModel(String text)
+	{
+		super();
+		this.text = text;
+		this.timestamp = new Date();
+	}
+	
 	public String getText()
 	{
 		return text;
@@ -28,5 +42,6 @@ public class lonelyTweetModel
 	{
 		this.timestamp = timestamp;
 	}
+
 	
 }
