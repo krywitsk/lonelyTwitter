@@ -1,5 +1,7 @@
 package ca.ualberta.cs.lonelytwitter;
 
+import java.util.ArrayList;
+
 
 public class TweetListController
 {
@@ -20,6 +22,11 @@ public class TweetListController
 		LonelyTweetModel lt = new NormalTweetModel(text);
 		ArrayList<LonelyTweetModel> list = tweetListModel.getList();
 		list.add(lt);
+		tweetListModel.setList(list);
+	}
+	
+	public TweetListModel getTweetListModel() {
+		return tweetListModel;
 	}
 		
 	

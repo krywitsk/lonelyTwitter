@@ -1,12 +1,12 @@
 package ca.ualberta.cs.lonelytwitter;
 
 
-public class ConcreteTweetView implements tweetView
+public class ConcreteTweetView implements TweetView
 {
 
-	public String formatTweet(lonelyTweetModel lt)
+	public String formatTweet(LonelyTweetModel lt)
 	{
-		return lt.getTimestamp.toString() + " | " + lt.getText();
+		return lt.getTimestamp().toString() + " | " + lt.getText();
 	}
 
 }

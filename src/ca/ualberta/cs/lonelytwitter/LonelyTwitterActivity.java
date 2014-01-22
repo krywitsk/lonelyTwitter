@@ -9,11 +9,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.google.gson.Gson;
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -23,6 +26,9 @@ public class LonelyTwitterActivity extends Activity {
 	private static final String FILENAME = "file.sav";
 	private EditText bodyText;
 	private ListView oldTweetsList;
+	private TweetListController tweetControl;
+	ArrayAdapter<String> adapter;
+
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -32,20 +38,38 @@ public class LonelyTwitterActivity extends Activity {
 
 		bodyText = (EditText) findViewById(R.id.body);
 		Button saveButton = (Button) findViewById(R.id.save);
+		Button clearButton = (Button) findViewById(R.id.clear);
 		oldTweetsList = (ListView) findViewById(R.id.oldTweetsList);
-
+		
+		tweetControl = new TweetListController();
+		
+		adapter = new ArrayAdapter<String>(this,R.layout.list_item, tweetControl.getTweetListModel().getStrings());
+		oldTweetsList.setAdapter(adapter);
+		
 		saveButton.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
 				setResult(RESULT_OK);
 				String text = bodyText.getText().toString();
+				tweetControl.addTweet(text);
 				saveInFile(text, new Date(System.currentTimeMillis()));
-				finish();
+				//crashes
+				//tweetControl.getTweetListModel().update();
+				oldTweetsList.setAdapter(adapter);
+				adapter.notifyDataSetChanged();
+				//finish();
+			}
+		});
+		
+		clearButton.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+
+				adapter.notifyDataSetChanged();
+				//finish();
 
 			}
 		});
 	}
-
 	@Override
 	protected void onStart() {
 		// TODO Auto-generated method stub
@@ -57,6 +81,8 @@ public class LonelyTwitterActivity extends Activity {
 	}
 
 	private String[] loadFromFile() {
+		
+
 		ArrayList<String> tweets = new ArrayList<String>();
 		try {
 			FileInputStream fis = openFileInput(FILENAME);
@@ -75,6 +101,10 @@ public class LonelyTwitterActivity extends Activity {
 			e.printStackTrace();
 		}
 		return tweets.toArray(new String[tweets.size()]);
+
+	
+		
+		
 	}
 	
 	private void saveInFile(String text, Date date) {

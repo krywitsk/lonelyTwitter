@@ -1,5 +1,7 @@
 package ca.ualberta.cs.lonelytwitter;
 
+import java.util.Date;
+
 
 //Java Access modifiers
 //	private - only current class
@@ -35,6 +37,7 @@ public abstract class LonelyTweetModel
 		return text;
 	}
 	public abstract void setText(String text);
+	
 	public Date getTimestamp()
 	{
 		return timestamp;

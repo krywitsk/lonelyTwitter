@@ -1,14 +1,19 @@
 package ca.ualberta.cs.lonelytwitter;
 
+import java.util.Date;
+
 
 public class NormalTweetModel extends LonelyTweetModel
 {
 
-	public normalTweetModel(String text)
-	{;
+
+
+	public NormalTweetModel(String text)
+	{
 		super(text);
 		// TODO Auto-generated constructor stub
 	}
+
 
 	@Override
 	public void setText(String text)
@@ -23,10 +28,9 @@ public class NormalTweetModel extends LonelyTweetModel
 		
 	}
 	
-	@Override
-	public boolean getTweetModelType()
+	public boolean isTweetImportant()
 	{
-		return this.getClass().getName() == 'importantTweetModel';
+		return this.getClass().getName() == "importantTweetModel";
 	} 
 	
 }
